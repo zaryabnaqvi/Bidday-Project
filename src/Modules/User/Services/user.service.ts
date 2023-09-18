@@ -1,12 +1,12 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { User } from './entities/user.entity';
-import { CreateUserDto } from './dto/create-user.dto';
+import { User } from '../Entity/user.entity';
 // import { User } from 'src/types/user';
 // import { RegisterDTO } from './register.dto';
 import * as bcrypt from 'bcrypt';
-import { LoginDTO } from 'src/auth/dto/login.dto';
+import { userLoginDTO } from 'src/Modules/Authentication/DTO/UserLogin.dto';
+import { createUserDTO } from '../DTO/CreateUser.dto';
 // import { Payload } from 'src/types/payload';
 
 @Injectable()
@@ -16,7 +16,7 @@ export class UserService {
         @InjectModel('User') private userModel: Model<User>,
       ) {}
     
-      async create(CreateUserDto: CreateUserDto) {
+      async create(CreateUserDto: createUserDTO) {
         const { email } = CreateUserDto;
         const user = await this.userModel.findOne({ email });
         if (user) {
@@ -33,7 +33,7 @@ export class UserService {
 
     // login func
 
-    async findByLogin(UserDTO: LoginDTO) {
+    async findByLogin(UserDTO: userLoginDTO) {
 
       const { email, password } = UserDTO;
       const user = await this.userModel.findOne({ email });
