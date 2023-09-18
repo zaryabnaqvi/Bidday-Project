@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
+import { UserModule } from './Modules/User/user.module';
 import { MongooseModule } from '@nestjs/mongoose/dist/mongoose.module';
 import { ConfigModule } from '@nestjs/config';
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from './Modules/Authentication/auth.module';
 
 @Module({
   imports: [
