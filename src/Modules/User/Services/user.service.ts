@@ -12,7 +12,7 @@ import { createUserDTO } from '../DTO/CreateUser.dto';
 @Injectable()
 export class UserService {
 
-    constructor(
+    constructor(  
         @InjectModel('User') private userModel: Model<User>,
       ) {}
     
@@ -37,6 +37,7 @@ export class UserService {
 
       const { email, password } = UserDTO;
       const user = await this.userModel.findOne({ email });
+
       if (!user) {
         throw new HttpException('user doesnt exists', HttpStatus.BAD_REQUEST);
       }
@@ -46,6 +47,7 @@ export class UserService {
         throw new HttpException('invalid credential', HttpStatus.BAD_REQUEST);
       }
     }
+
 
    // return user object without password
       sanitizeUser(user: User) { 

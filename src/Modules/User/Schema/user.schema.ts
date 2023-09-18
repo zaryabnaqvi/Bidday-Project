@@ -26,7 +26,7 @@ import {
     @Prop()
     password: string;
   
-    @Prop()
+    @Prop() 
     contact: string;
   }
   

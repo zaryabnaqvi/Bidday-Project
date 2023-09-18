@@ -9,4 +9,4 @@ export class newPassDTO {
     @MinLength(6)
     password: string;
 
-}
+} 
