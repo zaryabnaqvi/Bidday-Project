@@ -112,7 +112,7 @@ async validateUser(authDTO: userLoginDTO){
 }
 async generateToken(IAuthPaylaod: {id: string ,email:string}){
     try{
-        const token = sign({email:IAuthPaylaod.email} ,  "process.env.SECRET_KEY" , { expiresIn: '7d' });
+        const token = this.jwtService.sign({email:IAuthPaylaod.email})
         return token;
     }catch (error) {
         throw new HttpException(
@@ -129,9 +129,9 @@ sanitizeUser(user: User) {
 }
 
   
-  async signPayload(email: payload ) {
-    return sign(email ,  "process.env.SECRET_KEY" , { expiresIn: '7d' });
-  }
+  // async signPayload(email: payload ) {
+  //   return sign(email ,  "process.env.SECRET_KEY" , { expiresIn: '7d' });
+  // }
 
 
   async requestResetPassword(resetPasswordDTO:resetPasswordDTO){
@@ -199,7 +199,7 @@ async verifyOtp(otpCode:verifyOtpDTO) {
           await this.OtpModel.deleteOne({ _id: isCodeVerified._id });
           throw new HttpException('OTP code expired. Please generate new!', HttpStatus.NOT_FOUND);
       }
-      const token = sign({email:isCodeVerified.email} ,  "process.env.SECRET_KEY" , { expiresIn: '7d' });;
+      const token = this.jwtService.sign({email:isCodeVerified.email});
       return {
           message: 'Proceed further',
           token
@@ -245,6 +245,25 @@ async resetPass(newPass:newPassDTO){
           error.status || HttpStatus.BAD_REQUEST,
       );
   }
+}
+
+async validate(payload : payload){
+  try{
+  const user = await this.UserModel.findOne({email:payload.email})
+
+  if(!user){
+    throw new HttpException('User with this email not found', HttpStatus.NOT_FOUND);
+  }
+
+  return user;}
+  catch(error){
+    throw new HttpException(
+      error.message,
+      error.status || HttpStatus.BAD_REQUEST,
+  );
+  }
+
+
 }
 
 
