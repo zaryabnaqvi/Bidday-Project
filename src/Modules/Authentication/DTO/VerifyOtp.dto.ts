@@ -1,8 +1,7 @@
-import { IsEmail, IsEnum, IsNotEmpty, IsOptional, IsPhoneNumber, IsPositive, MinLength } from 'class-validator';
+import { IsEmail, IsEnum, IsNotEmpty, IsNumberString, IsOptional, IsPhoneNumber, IsPositive, IsString, MinLength } from 'class-validator';
 
 export class verifyOtpDTO {
-
     @IsNotEmpty()
+    @IsNumberString()
     code: string;
-
 }

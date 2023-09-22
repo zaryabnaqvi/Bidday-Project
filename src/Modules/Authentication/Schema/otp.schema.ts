@@ -4,16 +4,19 @@ import {
     Schema,
     SchemaFactory
   } from '@nestjs/mongoose';
-  import {
-    Document
-  } from 'mongoose';
-  
+import { Document } from 'mongoose';
+
   export type OtpDocument = Otp & Document;
   
   @Schema()
   export class Otp {
   
-    @Prop()
+    @Prop({ 
+      required: true, 
+      unique: true, 
+      trim: true, 
+      lowercase: true 
+    })
     email: string;
   
     @Prop()
@@ -21,22 +24,13 @@ import {
   
     @Prop()
     expiry: Date;
-  
-    @Prop()
-    contact: string;
 
-    @Prop()
+    @Prop({ select: false })
     createdAt: Date;
 
-    @Prop()
-    UpdatedAt:Date
-
-
+    @Prop({ select: false })
+    updatedAt:Date
   }
   
-  export const OtpSchema = SchemaFactory.createForClass(Otp);
-
-
-
-
+export const OtpSchema = SchemaFactory.createForClass(Otp);
 
