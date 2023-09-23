@@ -40,10 +40,16 @@ export class Users extends Document{
   })
   role: Roles;
 
-  @Prop({ select: false }) // Exclude from query results
+  @Prop({ 
+    select: false, // Exclude from query results
+    default: Date.now,
+  })
   createdAt: Date;
 
-  @Prop({ select: false }) // Exclude from query results
+  @Prop({ 
+    select: false, // Exclude from query results
+    default: Date.now,
+  })
   updatedAt: Date;
 }
 
