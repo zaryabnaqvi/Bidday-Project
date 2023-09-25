@@ -8,6 +8,8 @@ import { AuthModule } from './Modules/Authentication/auth.module';
 import { config } from 'dotenv';
 import { DivisionModule } from './Modules/Divisions/division.module';
 import { BidderModule } from './Modules/Bidders/bidder.module';
+import { MarketModule } from './Modules/market/market.module';
+import { ProjectCodeModule } from './Modules/project-code/project-code.module';
 
 @Module({
   imports: [
@@ -23,8 +25,11 @@ import { BidderModule } from './Modules/Bidders/bidder.module';
     }),
     UserModule,
     AuthModule,
+    MarketModule,
+    ProjectCodeModule, 
     DivisionModule,
     BidderModule,
+
   ],
   controllers: [AppController],
   providers: [AppService],
