@@ -4,8 +4,9 @@ import {
     Schema,
     SchemaFactory
   } from '@nestjs/mongoose';
-import mongoose, { Document } from 'mongoose';
+import mongoose, { Document, Types } from 'mongoose';
 import { type } from 'os';
+import { Market, MarketSchema } from 'src/Modules/market/Schemas/maket.schema';
 // import { Market } from 'src/market/Schemas/maket.schema';
 
   export type ProjectCodeDocument = ProjectCode & Document;
@@ -21,7 +22,8 @@ import { type } from 'os';
     })
     name: string;
 
-   
+    @Prop({type:Types.ObjectId,ref:"Markets"})
+    MarketId:Types.ObjectId
  
   }
   

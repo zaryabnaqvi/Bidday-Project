@@ -60,24 +60,7 @@ export class MarketService {
   }
 
 
-  async findAllGetProjectCode(){
-    try{
-      const Market = await this.marketModel.find().populate("ProjectCodeIds");
-      if(Market.length === 0){
-        throw new HttpException('No market found', HttpStatus.NOT_FOUND);
-      }
-      return {
-        statusCode: HttpStatus.OK,
-        msg: 'Market Found Successfully',
-        data: Market
-      };
-    }catch (error) {
-      throw new HttpException(
-          error.message,
-          error.status || HttpStatus.BAD_REQUEST,
-      );
-    }
-  }
+
   
 
 
@@ -91,10 +74,7 @@ export class MarketService {
     return isMarketCodeExist;
   }
 
-
-  async getProjectCode(id : string | Types.ObjectId){
-    return await this.marketModel.findOne({ _id:id}).populate("ProjectCodeIds")
-  }
+ 
 
 
   async update(id: string | Types.ObjectId, updateMarketDto: UpdateMarketDto) {
@@ -134,10 +114,10 @@ async remove(id: string | Types.ObjectId) {
 
 
 
-  async AddProjectCodeToMarket(MarketId: string | Types.ObjectId, newProjectCodeId: Types.ObjectId,){
+  async AddProjectCodeToMarket(MarketId: string | Types.ObjectId, newProjectCode: any,){
     const updatedProjectCodeIds =await this.marketModel.updateOne(
       { _id: MarketId },
-      { $push: { ProjectCodeIds: newProjectCodeId } },
+      { $push: { ProjectCodeIds: newProjectCode } },
     );
     return {
       statusCode: HttpStatus.OK,
@@ -149,16 +129,16 @@ async remove(id: string | Types.ObjectId) {
 
 
 
-  async RemoveProjectCodeToMarket(MarketId: string | Types.ObjectId, newProjectCodeId: Types.ObjectId |string,){
+  async RemoveProjectCodeToMarket(MarketId: string | Types.ObjectId, newProjectCode : Types.ObjectId|string,){
     const removeProjectCodeIds =await this.marketModel.updateOne(
       { _id: MarketId },
-      { $push: { ProjectCodeIds: newProjectCodeId } },
+      { $push: { ProjectCodeIds: {_id:newProjectCode }} },
     );
     return {
       statusCode: HttpStatus.OK,
       message: 'Market Project Code Updated Successfully',
       data: removeProjectCodeIds,
-  };
+  }; 
 
 
   }

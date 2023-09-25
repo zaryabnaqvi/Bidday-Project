@@ -23,9 +23,9 @@ export class ProjectCodeController {
   //   return this.projectCodeService.findOne(+id);
   // }
 
-   @Patch('updateProjectCode/:id')
-   update(@Param('id') id: string, @Body() updateProjectCodeDto: UpdateProjectCodeDto) {
-     return this.projectCodeService.update(id, updateProjectCodeDto);
+   @Patch('updateProjectCode/:id/:marketId')
+   update(@Param('id') id: string, @Body() updateProjectCodeDto: UpdateProjectCodeDto,@Param('marketId') MarketId:string) {
+     return this.projectCodeService.update(MarketId,id, updateProjectCodeDto);
    }
 
    @Delete('deleteProjectCode/:Marketid/:id')
