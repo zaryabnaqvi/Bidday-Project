@@ -10,7 +10,7 @@ import {
 } from 'mongoose';
 import { Roles } from 'src/Utilities/Template/types';
 
-@Schema()
+@Schema({ timestamps: true })
 export class Users extends Document{
 
   @Prop({ 
@@ -39,18 +39,6 @@ export class Users extends Document{
     default: Roles.Estimator    
   })
   role: Roles;
-
-  @Prop({ 
-    select: false, // Exclude from query results
-    default: Date.now,
-  })
-  createdAt: Date;
-
-  @Prop({ 
-    select: false, // Exclude from query results
-    default: Date.now,
-  })
-  updatedAt: Date;
 }
 
 export const UsersSchema = SchemaFactory.createForClass(Users);

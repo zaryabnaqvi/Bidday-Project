@@ -1,9 +1,9 @@
-import { IsEmail, IsEnum, IsNotEmpty, IsNumber, IsPositive, IsString, Max, Min, MinLength } from "class-validator";
+import { IsEmail, IsEnum, IsNotEmpty, IsNumber, IsNumberString, IsPositive, IsString, Max, Min, MinLength } from "class-validator";
 
 export class createDivisionDTO {
 
     @IsNotEmpty()
-    @IsString()
+    @IsNumberString()
     divisionNumber: string;
 
     @IsNotEmpty()

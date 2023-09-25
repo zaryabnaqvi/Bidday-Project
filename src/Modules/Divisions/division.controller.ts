@@ -10,7 +10,9 @@ import {
     Query,
     UsePipes,
     ValidationPipe,
-    Request 
+    Request, 
+    HttpException,
+    HttpStatus
 } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
 import { DivisionService } from './Services/division.service';
@@ -23,18 +25,21 @@ export class DivisionController {
         private divisionService: DivisionService
     ){}
 
+    //Ready and Verified by Jawwad
     @Get()
     async fetchDivisions(){
         const result = await this.divisionService.fetchDivisions();
         return result;
     }
 
+    //Ready and Verified by Jawwad
     @Get(':divisionId')
     async fetchDivisionById(@Param('divisionId') id: string){
         const result = await this.divisionService.fetchDivisionById(id);
         return result;
     }
 
+    //Ready and Verified by Jawwad
     @Post('create')
     @UsePipes(ValidationPipe)
     async createDivision(@Body() CreateDivisionDto: createDivisionDTO) {
@@ -42,14 +47,19 @@ export class DivisionController {
         return result;
     }
 
+    //Ready and Verified by Jawwad
     @Patch('update/:divisionId')
     @UsePipes(ValidationPipe)
-    async updateDivision(@Param('divisionId') divisionId: string, @Body() divisionBody:updateDivisionDTO){
+    async updateDivision(@Param('divisionId') divisionId: string, @Body() divisionBody: updateDivisionDTO){
         console.log(divisionId);
+        if(Object.keys(divisionBody).length === 0){
+            throw new HttpException('Empty Body request is not allowed',HttpStatus.BAD_REQUEST);
+        }
         const result = await this.divisionService.updateDivision(divisionId, divisionBody);
         return result;
     }
 
+    //Ready and Verified by Jawwad
     @Delete('delete/:divisionId')
     async deleteDivision(@Param('divisionId') divisionId: string){
         console.log(divisionId);

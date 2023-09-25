@@ -56,9 +56,9 @@ export class BidderService {
 
     async createBidder(createBidderBody: createBidderDTO) {
         try {
-            const { bidderName, phoneNumber, contact } = createBidderBody;
+            const { companyName, phoneNumber, contact } = createBidderBody;
             const isBidderExist = await this.bidderModel.findOne({
-                bidderName,
+                companyName,
                 phoneNumber,
                 contact,
             });

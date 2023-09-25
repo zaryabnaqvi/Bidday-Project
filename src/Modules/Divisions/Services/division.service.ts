@@ -82,13 +82,11 @@ export class DivisionService {
 
   async updateDivision(id: string, divisionBody: updateDivisionDTO){
     try{
-        
         const updateDivision: IUpdateDivision = divisionBody
         await this.divisionModel.findByIdAndUpdate(id, updateDivision);
         const updatedDivisionData = await this.divisionModel.findOne({
             _id: id
         });
-
         return {
             statusCode: HttpStatus.OK,
             message: 'Division Data Updated Successfully',

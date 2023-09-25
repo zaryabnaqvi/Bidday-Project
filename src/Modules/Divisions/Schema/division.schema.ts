@@ -9,7 +9,7 @@ import {
     Types 
   } from 'mongoose';
   
-  @Schema()
+  @Schema({ timestamps: true })
   export class Divisions extends Document{
   
     @Prop({ 
@@ -21,18 +21,6 @@ import {
       required: true, 
     })
     divisionName: string;
-  
-    @Prop({ 
-        select: false, // Exclude from query results
-        default: Date.now,
-    }) 
-    createdAt: Date;
-  
-    @Prop({ 
-        select: false, // Exclude from query results
-        default: Date.now,
-    }) 
-    updatedAt: Date;
   }
   
   export const DivisionsSchema = SchemaFactory.createForClass(Divisions);

@@ -12,5 +12,5 @@ export class createBidderDTO {
 
     @IsNotEmpty()
     @IsString()
-    bidderName: string; 
+    companyName: string; 
 }

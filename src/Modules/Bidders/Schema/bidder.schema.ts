@@ -9,7 +9,7 @@ import {
     Types 
   } from 'mongoose';
   
-  @Schema()
+  @Schema({ timestamps: true })
   export class Bidders extends Document{
   
     @Prop({ 
@@ -26,18 +26,6 @@ import {
       required: true, 
     })
     contact: string;
-  
-    @Prop({ 
-        select: false, // Exclude from query results
-        default: Date.now,
-    }) 
-    createdAt: Date;
-  
-    @Prop({ 
-        select: false, // Exclude from query results
-        default: Date.now,
-    }) 
-    updatedAt: Date;
   }
   
   export const BiddersSchema = SchemaFactory.createForClass(Bidders);
