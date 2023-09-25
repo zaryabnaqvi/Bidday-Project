@@ -18,7 +18,7 @@ export class DivisionService {
     try{
       const divisions = await this.divisionModel.find();
       if(divisions.length === 0){
-        throw new HttpException('No user found', HttpStatus.NOT_FOUND);
+        throw new HttpException('No division found', HttpStatus.NOT_FOUND);
       }
       return {
         statusCode: HttpStatus.OK,
@@ -57,20 +57,20 @@ export class DivisionService {
   async createDivision( createDivisionBody: createDivisionDTO){
     try{
         const { divisionNumber, divisionName } = createDivisionBody;
-        const isUserExist = await this.divisionModel.findOne({
+        const isDivisionExist = await this.divisionModel.findOne({
             divisionNumber,
             divisionName
         });
-        if(isUserExist){
+        if(isDivisionExist){
             throw new HttpException('Division is already exist', HttpStatus.BAD_REQUEST)
         }        
         const toCreateDivision: ICreateDivision = createDivisionBody;
-        const newUser = new this.divisionModel(toCreateDivision);
-        const createdUser = await newUser.save();
+        const newDivision = new this.divisionModel(toCreateDivision);
+        const createdDivision = await newDivision.save();
       return {
         statusCode: HttpStatus.OK,
-        msg: 'User by Role  Found Successfully',
-        data: createdUser
+        msg: 'Division Created Successfully',
+        data: createdDivision
       };
     }catch (error) {
       throw new HttpException(

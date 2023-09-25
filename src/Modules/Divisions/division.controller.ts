@@ -11,7 +11,7 @@ import {
     UsePipes,
     ValidationPipe,
     Request 
-  } from '@nestjs/common';
+} from '@nestjs/common';
 import { Controller } from '@nestjs/common';
 import { DivisionService } from './Services/division.service';
 import { updateDivisionDTO } from './DTO/UpdateDivision.dto';
