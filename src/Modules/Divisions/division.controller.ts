@@ -18,8 +18,10 @@ import { Controller } from '@nestjs/common';
 import { DivisionService } from './Services/division.service';
 import { updateDivisionDTO } from './DTO/UpdateDivision.dto';
 import { createDivisionDTO } from './DTO/CreateDivision.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('divisions')
+@ApiTags('Divisions')
 export class DivisionController {
     constructor(
         private divisionService: DivisionService

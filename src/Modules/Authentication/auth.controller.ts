@@ -17,8 +17,10 @@ import { verifyOtpDTO } from './DTO/VerifyOtp.dto';
 import { newPassDTO } from './DTO/NewPass.dto';
 import { AuthGuard } from "@nestjs/passport";
 import { JwtAuthGuard } from 'src/Utilities/Jwt/jwtAuthGuard';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('auth')
+@ApiTags('Auth')
 export class AuthController {
   constructor(
     private authService: AuthService,

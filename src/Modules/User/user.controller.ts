@@ -18,8 +18,10 @@ import { Controller } from '@nestjs/common';
 import { UserService } from './Services/user.service';
 import { usersByRoleDTO } from './DTO/UsersByRole.dto';
 import { updateUserDTO } from './DTO/UpdateUser.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('users')
+@ApiTags('Users')
 export class UserController {
 
     constructor(

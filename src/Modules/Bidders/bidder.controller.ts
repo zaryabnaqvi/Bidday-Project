@@ -18,8 +18,10 @@ import { Controller } from '@nestjs/common';
 import { BidderService } from './Services/bidder.service';
 import { createBidderDTO } from './DTO/CreateBidder.dto';
 import { updateBidderDTO } from './DTO/UpdateBidder.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('bidders')
+@ApiTags('Bidders')
 export class BidderController {
     constructor(
         private bidderService: BidderService
