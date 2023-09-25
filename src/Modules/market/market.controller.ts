@@ -17,15 +17,7 @@ export class MarketController {
   findAll() {
     return this.marketService.findAll();
   }
-  @Get("/getMarketsProjectCodes")
-  find() {
-    return this.marketService.findAllGetProjectCode();
-  }
-
-  @Get("/getMarketProjectCode/:id")
-  getMarketProjectCode(@Param("id") id: string| Types.ObjectId){
-    return this.marketService.getProjectCode(id)
-  }
+ 
 
   @Get('getMarket/:id')
   findOne(@Param('id') id: string) {

@@ -22,10 +22,13 @@ export class ProjectCodeService {
         if(isProjectCodeExist){
             throw new HttpException('ProjectCode is already exist', HttpStatus.BAD_REQUEST)
         } 
-               
-        const newProjectCode = new this.projectCodeModel(createProjectCodeDto);
+        const pc={
+          name:createProjectCodeDto.name,
+          MarketId:MarketId
+        }
+        const newProjectCode = new this.projectCodeModel(pc);
         const createdProjectCode = await newProjectCode.save();
-        this.marketService.AddProjectCodeToMarket(MarketId,createdProjectCode._id)
+        this.marketService.AddProjectCodeToMarket(MarketId,createdProjectCode)
       return {
         statusCode: HttpStatus.OK,
         msg: "Project Code added Sucessfully",
@@ -51,14 +54,17 @@ export class ProjectCodeService {
   // }
 
 
-  async update(id: string | Types.ObjectId, updateProjectCodeDto: UpdateProjectCodeDto) {
+  async update(MarketId:string ,id: string | Types.ObjectId, updateProjectCodeDto: UpdateProjectCodeDto) {
     try{
 
-  
+      await this.marketService.RemoveProjectCodeToMarket(MarketId,id);
       await this.projectCodeModel.findByIdAndUpdate(id, updateProjectCodeDto);
+      
       const updatedProjectCode = await this.projectCodeModel.findOne({
           _id: id
       });
+      await this.marketService.AddProjectCodeToMarket(MarketId,updateProjectCodeDto)
+
 
       return {
           statusCode: HttpStatus.OK,

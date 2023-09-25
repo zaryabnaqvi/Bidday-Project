@@ -22,7 +22,7 @@ import { ProjectCode } from 'src/Modules/project-code/Schemas/project-code.schem
 
 
   @Prop({type: Types.ObjectId ,default:[], ref:ProjectCode.name })
-  ProjectCodeIds:Types.ObjectId[]
+  ProjectCodeIds:ProjectCode[]
   }
 
      
