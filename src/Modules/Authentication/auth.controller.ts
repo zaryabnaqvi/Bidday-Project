@@ -26,6 +26,8 @@ export class AuthController {
     private authService: AuthService,
   ) {} 
 
+  //#region : Authentication
+
   //Ready and Verified by Jawwad
   @Post('register')
   @UsePipes(ValidationPipe)
@@ -65,7 +67,9 @@ export class AuthController {
     const result =  await this.authService.resetPass(reqBody);
     return result;
   }
+  //#endregion
 
+  //#region : Checking Guard
   @Post('/hiddenmessage')
   @UseGuards(AuthGuard("jwt")) //I have to look at the auth guard and strategy again
   // @UseGuards(JwtAuthGuard)
@@ -74,4 +78,5 @@ export class AuthController {
     const result = "secrets" + JSON.stringify(req.user);
     return result;
   }
+  //#endregion
 }

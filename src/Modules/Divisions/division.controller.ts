@@ -27,6 +27,8 @@ export class DivisionController {
         private divisionService: DivisionService
     ){}
 
+    //#region : Divisions CRUD
+
     //Ready and Verified by Jawwad
     @Get()
     async fetchDivisions(){
@@ -68,4 +70,5 @@ export class DivisionController {
         const result = await this.divisionService.deleteDivision(divisionId);
         return result;
     }
+    //#endregion
 }

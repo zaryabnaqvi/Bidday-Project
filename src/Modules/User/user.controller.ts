@@ -23,11 +23,11 @@ import { ApiTags } from '@nestjs/swagger';
 @Controller('users')
 @ApiTags('Users')
 export class UserController {
-
     constructor(
         private userService: UserService
     ){}
 
+    //#region : Users CRUD
     //Ready and Verified by Jawwad
     @Get()
     async fetchUsers(){
@@ -69,4 +69,5 @@ export class UserController {
         const result = await this.userService.deleteUser(userId);
         return result;
     }
+    //#endregion
 }

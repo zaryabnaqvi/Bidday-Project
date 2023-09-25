@@ -26,7 +26,9 @@ export class BidderController {
     constructor(
         private bidderService: BidderService
     ){}
-
+    
+    //#region : Bidders CRUD
+    
     //Ready and Verified by Jawwad
     @Get()
     async fetchBidder() {
@@ -68,4 +70,5 @@ export class BidderController {
         const result = await this.bidderService.deleteBidder(bidderId);
         return result;
     }
+    //#endregion
 }
