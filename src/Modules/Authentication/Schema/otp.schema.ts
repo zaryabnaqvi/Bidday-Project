@@ -8,7 +8,7 @@ import { Document } from 'mongoose';
 
   export type OtpDocument = Otp & Document;
   
-  @Schema()
+  @Schema({ timestamps: true })
   export class Otp {
   
     @Prop({ 
@@ -24,12 +24,6 @@ import { Document } from 'mongoose';
   
     @Prop()
     expiry: Date;
-
-    @Prop({ select: false })
-    createdAt: Date;
-
-    @Prop({ select: false })
-    updatedAt:Date
   }
   
 export const OtpSchema = SchemaFactory.createForClass(Otp);

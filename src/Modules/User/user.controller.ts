@@ -10,20 +10,24 @@ import {
     Query,
     UsePipes,
     ValidationPipe,
-    Request 
+    Request, 
+    HttpException,
+    HttpStatus
   } from '@nestjs/common';
 import { Controller } from '@nestjs/common';
 import { UserService } from './Services/user.service';
 import { usersByRoleDTO } from './DTO/UsersByRole.dto';
 import { updateUserDTO } from './DTO/UpdateUser.dto';
+import { ApiTags } from '@nestjs/swagger';
 
 @Controller('users')
+@ApiTags('Users')
 export class UserController {
-
     constructor(
         private userService: UserService
     ){}
 
+    //#region : Users CRUD
     //Ready and Verified by Jawwad
     @Get()
     async fetchUsers(){
@@ -49,7 +53,10 @@ export class UserController {
     //Ready and Verified by Jawwad
     @Patch('update/:userId')
     @UsePipes(ValidationPipe)
-    async updateUser(@Param('userId') userId: string, @Body() userBody:updateUserDTO){
+    async updateUser(@Param('userId') userId: string, @Body() userBody: updateUserDTO){
+        if(Object.keys(userBody).length === 0){
+            throw new HttpException('Empty Body request is not allowed',HttpStatus.BAD_REQUEST);
+        }
         console.log(userId);
         const result = await this.userService.updateUser(userId, userBody);
         return result;
@@ -62,4 +69,5 @@ export class UserController {
         const result = await this.userService.deleteUser(userId);
         return result;
     }
+    //#endregion
 }

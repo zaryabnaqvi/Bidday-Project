@@ -6,6 +6,8 @@ import { MongooseModule } from '@nestjs/mongoose/dist/mongoose.module';
 import { ConfigModule } from '@nestjs/config';
 import { AuthModule } from './Modules/Authentication/auth.module';
 import { config } from 'dotenv';
+import { DivisionModule } from './Modules/Divisions/division.module';
+import { BidderModule } from './Modules/Bidders/bidder.module';
 
 @Module({
   imports: [
@@ -20,7 +22,9 @@ import { config } from 'dotenv';
       }),
     }),
     UserModule,
-    AuthModule
+    AuthModule,
+    DivisionModule,
+    BidderModule,
   ],
   controllers: [AppController],
   providers: [AppService],
