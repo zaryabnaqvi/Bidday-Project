@@ -16,8 +16,6 @@ import {
       required: true, 
     })
     BuildingTypeName: string;
-  
-   
   }
   
   export const BuildingTypeSchema = SchemaFactory.createForClass(BuildingType);

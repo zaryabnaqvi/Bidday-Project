@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { ProjectCodeService } from './Services/project-code.service';
-import { CreateProjectCodeDto } from './dto/create-project-code.dto';
-import { UpdateProjectCodeDto } from './dto/update-project-code.dto';
+import { CreateProjectCodeDto } from './DTO/create-project-code.dto';
+import { UpdateProjectCodeDto } from './DTO/update-project-code.dto';
 import { Types } from 'mongoose';
 
 @Controller('project-code')

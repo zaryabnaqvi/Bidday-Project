@@ -1,5 +1,5 @@
 import { NestFactory } from '@nestjs/core';
-import { DocumentBuilder } from '@nestjs/swagger';
+import { DocumentBuilder, SwaggerDocumentOptions } from '@nestjs/swagger';
 import { SwaggerModule } from '@nestjs/swagger';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
@@ -16,7 +16,13 @@ async function bootstrap() {
       'jwt', // Name of the authorization scheme 
     )
     .build();
-  const document = SwaggerModule.createDocument(app, config);
+    const options: SwaggerDocumentOptions =  {
+      operationIdFactory: (
+        controllerKey: string,
+        methodKey: string
+      ) => methodKey
+    };
+  const document = SwaggerModule.createDocument(app, config, options);
   SwaggerModule.setup('api', app, document);
   app.enableCors();
   await app.listen(3000);

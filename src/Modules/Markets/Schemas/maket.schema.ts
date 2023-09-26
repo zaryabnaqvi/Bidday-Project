@@ -19,14 +19,6 @@ import { ProjectCode } from 'src/Modules/project-code/Schemas/project-code.schem
       lowercase: true 
     })
     name: string;
-
-
-  @Prop({type: Types.ObjectId ,default:[], ref:ProjectCode.name })
-  ProjectCodeIds:ProjectCode[]
   }
 
-     
-  
-  
 export const MarketSchema = SchemaFactory.createForClass(Market);
-

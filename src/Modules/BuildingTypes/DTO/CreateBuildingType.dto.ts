@@ -3,8 +3,7 @@ import { IsEmail, IsEnum, IsNotEmpty, IsNumber, IsNumberString, IsPositive, IsSt
 export class CreateBuildingTypeDTO {
 
     @IsNotEmpty()
-    @IsNumberString()
+    @IsString()
     BuildingTypeName: string
-
 
 }

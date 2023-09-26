@@ -1,12 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { CreateProjectCodeDto } from '../dto/create-project-code.dto';
-import { UpdateProjectCodeDto } from '../dto/update-project-code.dto';
+import { CreateProjectCodeDto } from '../DTO/create-project-code.dto';
+import { UpdateProjectCodeDto } from '../DTO/update-project-code.dto';
 import { Model, Types } from 'mongoose';
 import { ProjectCode } from '../Schemas/project-code.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { HttpStatus } from '@nestjs/common/enums';
 import { HttpException } from '@nestjs/common/exceptions';
-import { MarketService } from 'src/Modules/market/Services/market.service';
+import { MarketService } from 'src/Modules/Markets/Services/market.service';
 
 @Injectable()
 export class ProjectCodeService {

@@ -4,7 +4,7 @@ import { ProjectCodeController } from './project-code.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ProjectCode, ProjectCodeSchema } from './Schemas/project-code.schema';
 // import { MarketService } from 'src/Modules/market/Services/market.service';
-import { MarketModule } from 'src/Modules/market/market.module';
+import { MarketModule } from '../Markets/market.module';
 // import { UserService } from 'src/Modules/User/Services/user.service';
 // import { UserModule } from 'src/Modules/User/user.module';
 // import { MarketService } from 'src/market/Services/market.service';

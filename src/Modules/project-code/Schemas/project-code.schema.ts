@@ -6,7 +6,7 @@ import {
   } from '@nestjs/mongoose';
 import mongoose, { Document, Types } from 'mongoose';
 import { type } from 'os';
-import { Market, MarketSchema } from 'src/Modules/market/Schemas/maket.schema';
+import { Market } from 'src/Modules/Markets/Schemas/maket.schema';
 // import { Market } from 'src/market/Schemas/maket.schema';
 
   export type ProjectCodeDocument = ProjectCode & Document;
@@ -21,11 +21,17 @@ import { Market, MarketSchema } from 'src/Modules/market/Schemas/maket.schema';
       lowercase: true ,
     })
     name: string;
-
-    @Prop({type:Types.ObjectId,ref:"Markets"})
-    MarketId:Types.ObjectId
  
+    //Foriegn Key
+    @Prop({ 
+      ref : 'Market', 
+      type : Types.ObjectId 
+    })
+    marketId: Market;
   }
   
 export const ProjectCodeSchema = SchemaFactory.createForClass(ProjectCode);
 
+
+// @Prop({ ref : 'Users', type : Types.ObjectId })
+// likeeId: Users;
