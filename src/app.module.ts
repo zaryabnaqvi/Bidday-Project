@@ -9,7 +9,7 @@ import { config } from 'dotenv';
 import { DivisionModule } from './Modules/Divisions/division.module';
 import { BidderModule } from './Modules/Bidders/bidder.module';
 import { MarketModule } from './Modules/Markets/market.module';
-import { ProjectCodeModule } from './Modules/project-code/project-code.module';
+import { ProjectCodeModule } from './Modules/ProjectCodes/projectCode.module';
 import { BuildingTypesModule } from './Modules/BuildingTypes/buildingType.module';
 
 @Module({

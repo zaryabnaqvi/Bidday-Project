@@ -4,8 +4,7 @@ import {
     Schema,
     SchemaFactory
   } from '@nestjs/mongoose';
-import mongoose, { Document, Types } from 'mongoose';
-import { type } from 'os';
+import { Document, Types } from 'mongoose';
 import { Market } from 'src/Modules/Markets/Schemas/maket.schema';
 // import { Market } from 'src/market/Schemas/maket.schema';
 
