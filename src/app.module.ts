@@ -11,6 +11,7 @@ import { BidderModule } from './Modules/Bidders/bidder.module';
 import { MarketModule } from './Modules/Markets/market.module';
 import { ProjectCodeModule } from './Modules/ProjectCodes/projectCode.module';
 import { BuildingTypesModule } from './Modules/BuildingTypes/buildingType.module';
+import { ProjectsModule } from './Modules/projects/projects.module';
 
 @Module({
   imports: [
@@ -30,9 +31,11 @@ import { BuildingTypesModule } from './Modules/BuildingTypes/buildingType.module
     ProjectCodeModule, 
     DivisionModule,
     BidderModule,
-    BuildingTypesModule
+    BuildingTypesModule,
+    ProjectsModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
+ 

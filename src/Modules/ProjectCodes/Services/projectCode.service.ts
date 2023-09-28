@@ -67,6 +67,8 @@ export class ProjectCodeService {
     }
   }
 
+
+
   async findOne(id: string) {
     try{
       const projectCodeById = await this.projectCodeModel.findById(id);
@@ -86,7 +88,7 @@ export class ProjectCodeService {
     }
   }
 
-  async findByMarketId(id: string) {
+  async findByMarketId(id: string | Types.ObjectId) {
     try{
       const projectCodeByMarketId = await this.projectCodeModel.find({
         marketId: id
@@ -148,4 +150,28 @@ export class ProjectCodeService {
     );
   }
   }
+
+  async findAllProjectCodesWithMarkets(){
+    let output:any=[]
+    const markets = await this.marketModel.find();
+    if(markets.length === 0){
+      throw new HttpException('Project Codes not found', HttpStatus.NOT_FOUND);
+    }
+    for(let i=0 ; i<markets.length;i++){
+      const projectCodes = await this.projectCodeModel.find({
+        marketId: markets[i]._id.toString()
+      });
+      let outputObject = {
+        marketId:markets[i]._id,
+        marketName:markets[i].name,
+        marketProjectCodes: projectCodes
+      }
+      output.push(outputObject)
+    }
+
+    return {
+      status:HttpStatus.OK,
+      message:output
+    };
+  } 
 }

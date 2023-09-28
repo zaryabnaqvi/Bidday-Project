@@ -34,6 +34,14 @@ export class ProjectCodeController {
   async findAll() {
     return await this.projectCodeService.findAll();
   }
+  
+
+  @Get("getAllMarkets")
+
+    async getAll(){
+        return await this.projectCodeService.findAllProjectCodesWithMarkets();
+      
+     }
 
   //Ready and verified by Jawwad
   @Get(':projectCodeId')
@@ -59,6 +67,8 @@ export class ProjectCodeController {
   async remove(@Param('id') id: string) {
     return await this.projectCodeService.remove(id);
   }
+
+
 
 //#endregion
 

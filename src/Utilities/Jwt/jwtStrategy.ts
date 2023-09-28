@@ -27,6 +27,6 @@ async validate(payload: any, done: VerifiedCallback) {
       false,
     );
   }
-  return payload;
+  return user;
 }
 }
