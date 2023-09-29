@@ -10,4 +10,4 @@ class UpdateProjectDto extends (0, mapped_types_1.PartialType)(CreateProject_dto
     }
 }
 exports.UpdateProjectDto = UpdateProjectDto;
-//# sourceMappingURL=update-project.dto.js.map
+//# sourceMappingURL=UpdateProject.dto.js.map
