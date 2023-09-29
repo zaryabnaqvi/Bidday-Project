@@ -10,9 +10,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.usersByRoleDTO = void 0;
+const openapi = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 const types_1 = require("../../../Utilities/Template/types");
 class usersByRoleDTO {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { role: { required: true, enum: require("../../../Utilities/Template/types").Roles } };
+    }
 }
 exports.usersByRoleDTO = usersByRoleDTO;
 __decorate([

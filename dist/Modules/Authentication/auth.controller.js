@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthController = void 0;
+const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const auth_service_1 = require("./Services/auth.service");
 const CreateUser_dto_1 = require("../User/DTO/CreateUser.dto");
@@ -56,6 +57,7 @@ exports.AuthController = AuthController;
 __decorate([
     (0, common_1.Post)('register'),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
+    openapi.ApiResponse({ status: 201 }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [CreateUser_dto_1.createUserDTO]),
@@ -64,6 +66,7 @@ __decorate([
 __decorate([
     (0, common_1.Post)('login'),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
+    openapi.ApiResponse({ status: 201 }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [UserLogin_dto_1.userLoginDTO]),
@@ -72,6 +75,7 @@ __decorate([
 __decorate([
     (0, common_1.Post)('requestResetPassword'),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
+    openapi.ApiResponse({ status: 201 }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [ResetPass_dto_1.resetPasswordDTO]),
@@ -80,6 +84,7 @@ __decorate([
 __decorate([
     (0, common_1.Post)('verifyOtp'),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
+    openapi.ApiResponse({ status: 201 }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [VerifyOtp_dto_1.verifyOtpDTO]),
@@ -88,6 +93,7 @@ __decorate([
 __decorate([
     (0, common_1.Post)('resetPassword'),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
+    openapi.ApiResponse({ status: 201 }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [NewPass_dto_1.newPassDTO]),
@@ -96,6 +102,7 @@ __decorate([
 __decorate([
     (0, common_1.Post)('/hiddenmessage'),
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)("jwt")),
+    openapi.ApiResponse({ status: 201, type: String }),
     __param(0, (0, common_1.Request)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.MarketController = void 0;
+const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const market_service_1 = require("./Services/market.service");
 const CreateMarket_dto_1 = require("./DTO/CreateMarket.dto");
@@ -42,6 +43,7 @@ exports.MarketController = MarketController;
 __decorate([
     (0, common_1.Post)("/create"),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
+    openapi.ApiResponse({ status: 201 }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [CreateMarket_dto_1.CreateMarketDTO]),
@@ -49,12 +51,14 @@ __decorate([
 ], MarketController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)("/getMarkets"),
+    openapi.ApiResponse({ status: 200 }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], MarketController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)('getMarket/:id'),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -63,6 +67,7 @@ __decorate([
 __decorate([
     (0, common_1.Patch)('updateMarket/:id'),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -71,6 +76,7 @@ __decorate([
 ], MarketController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)('deleteMarket/:id'),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.DivisionController = void 0;
+const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const common_2 = require("@nestjs/common");
 const division_service_1 = require("./Services/division.service");
@@ -52,12 +53,14 @@ let DivisionController = class DivisionController {
 exports.DivisionController = DivisionController;
 __decorate([
     (0, common_1.Get)(),
+    openapi.ApiResponse({ status: 200 }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], DivisionController.prototype, "fetchDivisions", null);
 __decorate([
     (0, common_1.Get)(':divisionId'),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Param)('divisionId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -66,6 +69,7 @@ __decorate([
 __decorate([
     (0, common_1.Post)('create'),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
+    openapi.ApiResponse({ status: 201 }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [CreateDivision_dto_1.createDivisionDTO]),
@@ -74,6 +78,7 @@ __decorate([
 __decorate([
     (0, common_1.Patch)('update/:divisionId'),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Param)('divisionId')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -82,6 +87,7 @@ __decorate([
 ], DivisionController.prototype, "updateDivision", null);
 __decorate([
     (0, common_1.Delete)('delete/:divisionId'),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Param)('divisionId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

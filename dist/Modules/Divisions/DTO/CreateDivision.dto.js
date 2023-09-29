@@ -10,8 +10,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.createDivisionDTO = void 0;
+const openapi = require("@nestjs/swagger");
 const class_validator_1 = require("class-validator");
 class createDivisionDTO {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { divisionNumber: { required: true, type: () => String }, divisionName: { required: true, type: () => String } };
+    }
 }
 exports.createDivisionDTO = createDivisionDTO;
 __decorate([
