@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BidderController = void 0;
+const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const common_2 = require("@nestjs/common");
 const bidder_service_1 = require("./Services/bidder.service");
@@ -52,12 +53,14 @@ let BidderController = class BidderController {
 exports.BidderController = BidderController;
 __decorate([
     (0, common_1.Get)(),
+    openapi.ApiResponse({ status: 200 }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], BidderController.prototype, "fetchBidder", null);
 __decorate([
     (0, common_1.Get)(':bidderId'),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Param)('bidderId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -66,6 +69,7 @@ __decorate([
 __decorate([
     (0, common_1.Post)('create'),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
+    openapi.ApiResponse({ status: 201 }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [CreateBidder_dto_1.createBidderDTO]),
@@ -74,6 +78,7 @@ __decorate([
 __decorate([
     (0, common_1.Patch)('update/:bidderId'),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Param)('bidderId')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -82,6 +87,7 @@ __decorate([
 ], BidderController.prototype, "updateBidder", null);
 __decorate([
     (0, common_1.Delete)('delete/:bidderId'),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Param)('bidderId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

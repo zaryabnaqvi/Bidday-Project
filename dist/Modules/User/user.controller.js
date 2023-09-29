@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UserController = void 0;
+const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const common_2 = require("@nestjs/common");
 const user_service_1 = require("./Services/user.service");
@@ -52,12 +53,14 @@ let UserController = class UserController {
 exports.UserController = UserController;
 __decorate([
     (0, common_1.Get)(),
+    openapi.ApiResponse({ status: 200 }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "fetchUsers", null);
 __decorate([
     (0, common_1.Get)(':userId'),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Param)('userId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -66,6 +69,7 @@ __decorate([
 __decorate([
     (0, common_1.Post)('byRole'),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
+    openapi.ApiResponse({ status: 201 }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [UsersByRole_dto_1.usersByRoleDTO]),
@@ -74,6 +78,7 @@ __decorate([
 __decorate([
     (0, common_1.Patch)('update/:userId'),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Param)('userId')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -82,6 +87,7 @@ __decorate([
 ], UserController.prototype, "updateUser", null);
 __decorate([
     (0, common_1.Delete)('delete/:userId'),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Param)('userId')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),

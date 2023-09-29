@@ -13,6 +13,7 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.BuildingTypesController = void 0;
+const openapi = require("@nestjs/swagger");
 const common_1 = require("@nestjs/common");
 const buildingType_service_1 = require("./Services/buildingType.service");
 const CreateBuildingType_dto_1 = require("./DTO/CreateBuildingType.dto");
@@ -42,6 +43,7 @@ exports.BuildingTypesController = BuildingTypesController;
 __decorate([
     (0, common_1.Post)("create"),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
+    openapi.ApiResponse({ status: 201, type: Object }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [CreateBuildingType_dto_1.CreateBuildingTypeDTO]),
@@ -49,12 +51,14 @@ __decorate([
 ], BuildingTypesController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)("getBuildingTypes"),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], BuildingTypesController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)('getBuildingType/:id'),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -63,6 +67,7 @@ __decorate([
 __decorate([
     (0, common_1.Patch)('update/:id'),
     (0, common_1.UsePipes)(common_1.ValidationPipe),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -71,6 +76,7 @@ __decorate([
 ], BuildingTypesController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)('delete/:id'),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
