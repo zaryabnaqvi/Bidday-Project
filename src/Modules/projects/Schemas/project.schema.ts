@@ -1,9 +1,9 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
-import { BuildingType } from 'src/Modules/BuildingTypes/Schemas/buildingType.schema';
-import { Market } from 'src/Modules/Markets/Schemas/maket.schema';
-import { ProjectCode } from 'src/Modules/ProjectCodes/Schemas/projectCode.schema';
-import { Users } from '@app/src/Modules/User/schema/user.schema';
+import { BuildingType } from '../../../Modules/BuildingTypes/Schemas/buildingType.schema';
+import { Market } from '../../../Modules/Markets/Schemas/maket.schema';
+import { ProjectCode } from '../../../Modules/ProjectCodes/Schemas/projectCode.schema';
+import { Users } from '../../../Modules/User/schema/user.schema';
 
 @Schema({timestamps:true})
 export class Project {

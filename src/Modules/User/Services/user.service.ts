@@ -2,11 +2,11 @@ import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Users } from '../schema/user.schema';
-import { Roles } from 'src/Utilities/Template/types';
+import { Roles } from '../../../Utilities/Template/types';
 import { usersByRoleDTO } from '../DTO/UsersByRole.dto';
 import { updateUserDTO } from '../DTO/UpdateUser.dto';
 import { IUpdateUser } from '../Interfaces/IUpdateUser.interface';
-import { encodePassword } from 'src/Utilities/Hashing/bcrypt';
+import { encodePassword } from '../../../Utilities/Hashing/bcrypt';
 
 @Injectable()
 export class UserService {

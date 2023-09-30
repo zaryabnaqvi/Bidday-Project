@@ -1,7 +1,7 @@
 import { ExtractJwt, Strategy,VerifiedCallback } from 'passport-jwt';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable ,HttpException,HttpStatus } from '@nestjs/common';
-import { AuthService } from 'src/Modules/Authentication/Services/auth.service';
+import { AuthService } from '../../Modules/Authentication/Services/auth.service';
 import { ConfigService } from '@nestjs/config';
 // import { ConfigService, ConfigModule } from '@nestjs/config';
 

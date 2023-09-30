@@ -5,7 +5,7 @@ import {
     SchemaFactory
   } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
-import { Market } from 'src/Modules/Markets/Schemas/maket.schema';
+import { Market } from '../../../Modules/Markets/Schemas/maket.schema';
 // import { Market } from 'src/market/Schemas/maket.schema';
 
   export type ProjectCodeDocument = ProjectCode & Document;

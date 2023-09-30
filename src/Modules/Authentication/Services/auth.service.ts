@@ -4,24 +4,24 @@ import { HttpException, HttpStatus } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { sign } from 'jsonwebtoken';
-import { UserService } from 'src/Modules/User/Services/user.service';
+import { UserService } from '../../../Modules/User/Services/user.service';
 import { payload } from '../DTO/payload.dto';
 import { resetPasswordDTO } from '../DTO/ResetPass.dto';
 import {generateOtpCode} from '../../../Utilities/OTP/otpGenerator'
-import { transporter } from 'src/Utilities/Email/sendEmail';
-import * as moment from 'moment';
+import { transporter } from '../../../Utilities/Email/sendEmail';
+import  moment from 'moment';
 import { userLoginDTO } from '../DTO/UserLogin.dto';
-import { comparePassword } from 'src/Utilities/Hashing/bcrypt';
+import { comparePassword } from '../../../Utilities/Hashing/bcrypt';
 import { verifyOtpDTO } from '../DTO/VerifyOtp.dto';
-import { encodePassword } from 'src/Utilities/Hashing/bcrypt';
-import { createUserDTO } from 'src/Modules/User/DTO/CreateUser.dto';
+import { encodePassword } from '../../../Utilities/Hashing/bcrypt';
+import { createUserDTO } from '../../../Modules/User/DTO/CreateUser.dto';
 import { newPassDTO } from '../DTO/NewPass.dto';
 import { JwtService } from '@nestjs/jwt'
-import { Users } from '@app/src/Modules/User/schema/user.schema';
+import { Users } from '../../../Modules/User/schema/user.schema';
 import { Otp } from '../Schema/otp.schema';
-import { ICreateUser } from 'src/Modules/User/Interfaces/ICreateUser.interface';
+import { ICreateUser } from '../../../Modules/User/Interfaces/ICreateUser.interface';
 import { IPaylaod } from '../Interfaces/IPayload.interface';
-import { fromEmail } from 'src/Utilities/Template/emailConstants';
+import { fromEmail } from '../../../Utilities/Template/emailConstants';
 import { IOtp } from '../Interfaces/IOtp.interface';
 
 @Injectable()

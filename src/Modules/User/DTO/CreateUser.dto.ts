@@ -1,5 +1,5 @@
 import { IsEmail, IsEnum, IsNotEmpty, IsNumber, IsPositive, IsString, Max, Min, MinLength } from "class-validator";
-import { Roles } from "src/Utilities/Template/types";
+import { Roles } from "../../../Utilities/Template/types";
 
 export class createUserDTO {
     @IsNotEmpty()

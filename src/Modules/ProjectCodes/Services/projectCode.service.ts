@@ -7,7 +7,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { HttpStatus } from '@nestjs/common/enums';
 import { HttpException } from '@nestjs/common/exceptions';
 import { IProjectCode } from '../Interfaces/IProjectCode.interface';
-import { Market } from 'src/Modules/Markets/Schemas/maket.schema';
+import { Market } from '../../../Modules/Markets/Schemas/maket.schema';
 import { IUpdateProjectCode } from '../Interfaces/IUpdateProjectCode.interface';
 
 @Injectable()

@@ -8,7 +8,7 @@ import {
   Schema as NewSchema,
   Types 
 } from 'mongoose';
-import { Roles } from 'src/Utilities/Template/types';
+import { Roles } from '../../../Utilities/Template/types';
 
 @Schema({ timestamps: true })
 export class Users extends Document{
