@@ -17,9 +17,8 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-     "paths": {
-      "@app/*": ["*"] // Example path mapping
-    },
-   
+
+   "paths": {  "@app/*": ["*"]}
+
   }
 }
