@@ -1,4 +1,4 @@
-import { Roles } from "src/Utilities/Template/types";
+import { Roles } from "../../../Utilities/Template/types";
 
 export interface IPaylaod  {
     email: string;

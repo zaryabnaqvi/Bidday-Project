@@ -1,5 +1,5 @@
 import { IsEmail, IsEnum, IsOptional, IsString, MinLength } from "class-validator";
-import { Roles } from "src/Utilities/Template/types";
+import { Roles } from "../../../Utilities/Template/types";
 
 
 export class updateUserDTO {
