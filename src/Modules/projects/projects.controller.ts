@@ -8,7 +8,7 @@ import { retry } from 'rxjs';
 
 
 @Controller('projects')
-@ApiTags('projects')
+@ApiTags('Projects')
 
 export class ProjectsController {
   constructor(private readonly projectsService: ProjectsService) {}
