@@ -11,7 +11,7 @@ import { BidderModule } from './Modules/Bidders/bidder.module';
 import { MarketModule } from './Modules/Markets/market.module';
 import { ProjectCodeModule } from './Modules/ProjectCodes/projectCode.module';
 import { BuildingTypesModule } from './Modules/BuildingTypes/buildingType.module';
-import { ProjectsModule } from './Modules/projects/projects.module';
+import { ProjectsModule } from './Modules/Projects/projects.module';
 
 @Module({
   imports: [

@@ -1,6 +1,6 @@
 import { IsNotEmpty, IsString, IsDate, IsNumber, IsOptional } from 'class-validator';
 
-export class CreateProjectDto {
+export class CreateProjectDTO {
   @IsNotEmpty()
   @IsString()
   LCINumber: string;

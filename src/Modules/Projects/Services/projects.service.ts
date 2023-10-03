@@ -1,33 +1,35 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException, HttpException, HttpStatus } from '@nestjs/common';
 import { Model, Types } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
 import { Project } from '../Schemas/project.schema';
-import { CreateProjectDto } from '../DTO/CreateProject.dto';
-import { UpdateProjectDto } from '../DTO/UpdateProject.dto';
+import { CreateProjectDTO } from '../DTO/CreateProject.dto';
+import { UpdateProjectDTO } from '../DTO/UpdateProject.dto';
 
 @Injectable()
 export class ProjectsService{
-  constructor(@InjectModel(Project.name) private projectModel: Model<Project>) {}
+  constructor(
+    @InjectModel(Project.name) private projectModel: Model<Project>
+  ) {}
 
-  async create(createProjectDto: CreateProjectDto) {
+  async create(createProjectDto: CreateProjectDTO) {
     try {
       const { LCINumber } = createProjectDto;
       const isProjectExist = await this.projectModel.findOne({ LCINumber });
-
       if (isProjectExist) {
         throw new BadRequestException('Project with the same LCINumber already exists');
       }
-
       const project = new this.projectModel(createProjectDto);
       const createdProject = await project.save();
-
       return {
-        statusCode: 201,
+        statusCode: 200,
         message: 'Project created successfully',
         data: createdProject,
       };
     } catch (error) {
-      throw new BadRequestException(error.message);
+      throw new HttpException(
+        error.message,
+        error.status || HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
@@ -45,7 +47,10 @@ export class ProjectsService{
         data: projects,
       };
     } catch (error) {
-      throw new NotFoundException(error.message);
+      throw new HttpException(
+        error.message,
+        error.status || HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
@@ -63,7 +68,10 @@ export class ProjectsService{
         data: project,
       };
     } catch (error) {
-      throw new NotFoundException(error.message);
+      throw new HttpException(
+        error.message,
+        error.status || HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
@@ -81,12 +89,14 @@ export class ProjectsService{
         data: projects,
       };
     } catch (error) {
-      throw new NotFoundException(error.message);
+      throw new HttpException(
+        error.message,
+        error.status || HttpStatus.BAD_REQUEST,
+      );
     }
   }
   
-
-  async update(id: string, updateProjectDto: UpdateProjectDto) {
+  async update(id: string, updateProjectDto: UpdateProjectDTO) {
     try {
       if (!updateProjectDto || Object.keys(updateProjectDto).length === 0) {
         throw new BadRequestException('Empty update data');
@@ -104,7 +114,10 @@ export class ProjectsService{
         data: updatedProject,
       };
     } catch (error) {
-      throw new BadRequestException(error.message);
+      throw new HttpException(
+        error.message,
+        error.status || HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
@@ -121,7 +134,10 @@ export class ProjectsService{
         message: 'Project deleted successfully',
       };
     } catch (error) {
-      throw new NotFoundException(error.message);
+      throw new HttpException(
+        error.message,
+        error.status || HttpStatus.BAD_REQUEST,
+      );
     }
   }
 }
