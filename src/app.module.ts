@@ -12,6 +12,9 @@ import { MarketModule } from './Modules/Markets/market.module';
 import { ProjectCodeModule } from './Modules/ProjectCodes/projectCode.module';
 import { BuildingTypesModule } from './Modules/BuildingTypes/buildingType.module';
 import { ProjectsModule } from './Modules/Projects/projects.module';
+// import { DivisionCategory } from './Modules/division-category/Schemas/divisionCategory.schema';
+import { DivisionCategoryModule } from './Modules/divisionCategory/divisionCategory.module';
+import { BreakDownItemModule } from './Modules/BreakDownItems/BreakDownItem.module';
 
 @Module({
   imports: [
@@ -32,7 +35,9 @@ import { ProjectsModule } from './Modules/Projects/projects.module';
     DivisionModule,
     BidderModule,
     BuildingTypesModule,
-    ProjectsModule
+    ProjectsModule,
+    DivisionCategoryModule,
+    BreakDownItemModule
   ],
   controllers: [AppController],
   providers: [AppService],
