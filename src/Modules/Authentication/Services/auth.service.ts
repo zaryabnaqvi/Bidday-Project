@@ -17,7 +17,7 @@ import { encodePassword } from '../../../Utilities/Hashing/bcrypt';
 import { createUserDTO } from '../../../Modules/User/DTO/CreateUser.dto';
 import { newPassDTO } from '../DTO/NewPass.dto';
 import { JwtService } from '@nestjs/jwt'
-import { Users } from '../../../Modules/User/Schema/user.schema';
+import { Users } from '../../../Modules/User/schema/user.schema';
 import { Otp } from '../Schema/otp.schema';
 import { ICreateUser } from '../../../Modules/User/Interfaces/ICreateUser.interface';
 import { IPaylaod } from '../Interfaces/IPayload.interface';
