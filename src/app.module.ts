@@ -12,7 +12,7 @@ import { MarketModule } from './Modules/Markets/market.module';
 import { ProjectCodeModule } from './Modules/ProjectCodes/projectCode.module';
 import { BuildingTypesModule } from './Modules/BuildingTypes/buildingType.module';
 import { ProjectsModule } from './Modules/Projects/projects.module';
-import { DivisionCategoryModule } from './Modules/divisionCategory/divisionCategory.module';
+import { DivisionCategoryModule } from './Modules/DivisionCategory/divisionCategory.module';
 import { BreakDownItemModule } from './Modules/BreakDownItems/BreakDownItem.module';
 
 @Module({
