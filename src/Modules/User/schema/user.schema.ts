@@ -9,9 +9,9 @@ import {
   Types 
 } from 'mongoose';
 import { Roles } from '../../../Utilities/Template/types';
-
+export type UsersDocument = Users & Document;
 @Schema({ timestamps: true })
-export class Users extends Document{
+export class Users {
 
   @Prop({ 
     required: true, 
@@ -41,6 +41,8 @@ export class Users extends Document{
   role: Roles;
 }
 
+
+
 export const UsersSchema = SchemaFactory.createForClass(Users);
 
 
@@ -58,4 +60,32 @@ export const UsersSchema = SchemaFactory.createForClass(Users);
   // artist: Types.ObjectId[];
 
   // @Prop({ type: [{ type: Types.ObjectId, ref: 'Genre' }] })
-  // genre: Types.ObjectId[];
+//   // genre: Types.ObjectId[];
+//   import {
+//     Prop,
+//     Schema,
+//     SchemaFactory
+//   } from '@nestjs/mongoose';
+// import { Document } from 'mongoose';
+
+//   export type OtpDocument = Otp & Document;
+  
+//   @Schema({ timestamps: true })
+//   export class Otp {
+  
+//     @Prop({ 
+//       required: true, 
+//       unique: true, 
+//       trim: true, 
+//       lowercase: true 
+//     })
+//     email: string;
+  
+//     @Prop()
+//     code: string;
+  
+//     @Prop()
+//     expiry: Date;
+//   }
+  
+// export const OtpSchema = SchemaFactory.createForClass(Otp);
