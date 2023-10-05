@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
-import { CreateDivisionCategoryDto } from '../DTO/CreateDivisionCategory.DTO';
-import { UpdateDivisionCategoryDto } from '../DTO/UpdateDivisionCategory.DTO';
+import { CreateDivisionCategoryDto } from '../DTO/CreateDivisionCategory.dto';
+import { UpdateDivisionCategoryDto } from '../DTO/UpdateDivisionCategory.dto';
 import { DivisionCategory } from '../Schemas/divisionCategory.schema';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
