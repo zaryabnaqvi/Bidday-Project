@@ -3,7 +3,7 @@ import { Document, Types } from 'mongoose';
 import { BuildingType } from '../../../Modules/BuildingTypes/Schemas/buildingType.schema';
 import { Market } from '../../../Modules/Markets/Schemas/maket.schema';
 import { ProjectCode } from '../../../Modules/ProjectCodes/Schemas/projectCode.schema';
-import { Users } from '../../../Modules/User/schema/user.schema';
+import { Users } from '../../../Modules/User/Schema/user.schema';
 
 @Schema({timestamps:true})
 export class Project {
