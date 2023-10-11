@@ -14,6 +14,8 @@ import { BuildingTypesModule } from './Modules/BuildingTypes/buildingType.module
 import { ProjectsModule } from './Modules/Projects/projects.module';
 import { DivisionCategoryModule } from './Modules/DivisionCategory/divisionCategory.module';
 import { BreakDownItemModule } from './Modules/BreakDownItems/BreakDownItem.module';
+import { InitialBidModule } from './Modules/InitialBid/InitialBid.module';
+import { IndividualBidModule } from './Modules/IndividualBid/IndividualBid.module';
 
 @Module({
   imports: [
@@ -36,7 +38,9 @@ import { BreakDownItemModule } from './Modules/BreakDownItems/BreakDownItem.modu
     BuildingTypesModule,
     ProjectsModule,
     DivisionCategoryModule,
-    BreakDownItemModule
+    BreakDownItemModule,
+    InitialBidModule,
+    IndividualBidModule
   ],
   controllers: [AppController],
   providers: [AppService],
