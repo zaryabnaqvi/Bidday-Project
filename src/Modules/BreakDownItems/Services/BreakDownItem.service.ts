@@ -10,6 +10,8 @@ import { throwIfEmpty } from 'rxjs';
 import { ICreateBreakDownItem } from '../Interfaces/ICreateBreakDownItem.interface';
 import { IUpdateBreakDownItem } from '../Interfaces/IUpdateBreakDownItem.interface';
 import { Divisions } from '../../../Modules/Divisions/Schema/division.schema';
+import { InitialBid } from '../../../Modules/initialBid/Schema/InitialBid.schema';
+import { IndividualBid } from '@app/Modules/IndividualBid/Schema/IndividualBid.schema';
 
 @Injectable()
 
@@ -20,6 +22,11 @@ export class BreakDownItemService {
     @InjectModel(Project.name) private readonly projectModel: Model<Project>,
     @InjectModel(DivisionCategory.name) private readonly divisionCategoryModel: Model<DivisionCategory>,
     @InjectModel(Divisions.name) private readonly divisionModel: Model<Divisions>,
+    @InjectModel(InitialBid.name) private readonly initialBidModel: Model<InitialBid>,
+    @InjectModel(IndividualBid.name) private readonly individualBidModel: Model<IndividualBid>,
+
+
+
 
   ) { }
 
@@ -79,14 +86,25 @@ export class BreakDownItemService {
 
   async findBreakDowmItemByProjectForDivision(projectId: string, divisionCategoryId: string) {
     try {
+      let output :any[]=[]
       const BreakDownItems = await this.breakDownItemModel.find({ projectId, divisionCategoryId });
       if (BreakDownItems.length === 0) {
         throw new HttpException('BreakDownItems not found', HttpStatus.NOT_FOUND);
       }
+      for(let i=0;i<BreakDownItems.length;i++){
+        const bidData = await this.individualBidModel.find({breakDownItemId:BreakDownItems[0].id})
+        const outputModel={
+          BreakDownItem:BreakDownItems[0],
+          IndividualBid:bidData
+
+        }
+        output.push(outputModel)
+      }
+
       return {
         statusCode: HttpStatus.OK,
         msg: 'BreakDownItems for Project Found Successfully',
-        data: BreakDownItems
+        data: output
       };
 
     } catch (error) {
@@ -106,7 +124,9 @@ export class BreakDownItemService {
       }
       for(let i =0; i<DivisionCategorys.length;i++){
         const BreakDownItems = await this.findBreakDowmItemByProjectForDivision(projectId,DivisionCategorys[i].id)
+        const initialBid = await this.initialBidModel.find({divisionCategoryId:DivisionCategorys[i].id,projectId:projectId})
         let outputModel = {
+            initialBid:initialBid,
             DivisionCategoryId:DivisionCategorys[i].id,
             DivisionCategoryName:DivisionCategorys[i].divisionCategoryName,
             BreakDownItems:BreakDownItems.data
