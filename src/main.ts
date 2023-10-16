@@ -24,7 +24,10 @@ async function bootstrap() {
     };
   const document = SwaggerModule.createDocument(app, config, options);
   SwaggerModule.setup('api', app, document);
-  app.enableCors();
+  app.enableCors({
+    origin: "*",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  });
   await app.listen(3000); 
 }
 bootstrap();

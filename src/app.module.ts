@@ -16,6 +16,7 @@ import { DivisionCategoryModule } from './Modules/DivisionCategory/divisionCateg
 import { BreakDownItemModule } from './Modules/BreakDownItems/BreakDownItem.module';
 import { InitialBidModule } from './Modules/InitialBid/InitialBid.module';
 import { IndividualBidModule } from './Modules/IndividualBid/IndividualBid.module';
+import { JwtStrategy } from './Utilities/Jwt/jwtStrategy';
 
 @Module({
   imports: [

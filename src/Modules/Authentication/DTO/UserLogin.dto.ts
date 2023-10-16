@@ -5,14 +5,14 @@ export class userLoginDTO {
     @IsNotEmpty()
     @IsString()
     @IsEmail()
-    email: string;
+    email: string = "muhammadjawwad417@gmail.com";
 
     @IsNotEmpty()
     @IsString()
     @MinLength(6)
-    password: string;
+    password: string = "bcit-076";
 
     @IsNotEmpty()
     @IsEnum(Roles)
-    role: Roles
+    role: Roles;
 }

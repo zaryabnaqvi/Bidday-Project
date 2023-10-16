@@ -4,13 +4,13 @@ export class createBidderDTO {
 
     @IsNotEmpty()
     @IsNumberString()
-    phoneNumber: string;
+    phoneNumber: string = "923182834216";
 
     @IsNotEmpty()
     @IsString()
-    contact: string;
+    contact: string = "923182834216";
 
     @IsNotEmpty()
     @IsString()
-    companyName: string; 
+    companyName: string = "LCI Estimation and Constructions"; 
 }

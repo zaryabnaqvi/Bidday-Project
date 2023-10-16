@@ -20,7 +20,7 @@ import { JwtService } from '@nestjs/jwt'
 import { Users } from '../../../Modules/User/Schema/user.schema';
 import { Otp } from '../Schema/otp.schema';
 import { ICreateUser } from '../../../Modules/User/Interfaces/ICreateUser.interface';
-import { IPaylaod } from '../Interfaces/IPayload.interface';
+import { IAuthPayload } from '../Interfaces/IPayload.interface';
 import { fromEmail } from '../../../Utilities/Template/emailConstants';
 import { IOtp } from '../Interfaces/IOtp.interface';
 
@@ -51,7 +51,7 @@ export class AuthService {
             }
             // const { _id } = createdUser;
             // console.log("Getting the id of the createdUser",createdUser.id);   
-            // const payload: IPaylaod = {
+            // const payload: IAuthPayload = {
             //     id: _id,
             //     email: createdUser.email,
             //     role: createdUser.role,
@@ -68,7 +68,7 @@ export class AuthService {
     async userLogin(authDTO: userLoginDTO){
         try{
             const user = await this.validateUser(authDTO);
-            const payload: IPaylaod = {
+            const payload: IAuthPayload = {
                 id: user.id,
                 email: user.email,
                 role: user.role,
@@ -108,7 +108,7 @@ export class AuthService {
         }
     }
 
-    async generateToken(IAuthPaylaod: IPaylaod){
+    async generateToken(IAuthPaylaod: IAuthPayload){
         try{
             const token = this.jwtService.sign({email: IAuthPaylaod.email})
             return token;

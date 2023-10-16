@@ -4,5 +4,5 @@ export class resetPasswordDTO {
     @IsNotEmpty()
     @IsString()
     @IsEmail()
-    email: string;
+    email: string =  "muhammadjawwad417@gmail.com";
 }
