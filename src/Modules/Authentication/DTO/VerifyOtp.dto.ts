@@ -3,5 +3,5 @@ import { IsEmail, IsEnum, IsNotEmpty, IsNumberString, IsOptional, IsPhoneNumber,
 export class verifyOtpDTO {
     @IsNotEmpty()
     @IsNumberString()
-    code: string;
+    code: string = "5837";
 }

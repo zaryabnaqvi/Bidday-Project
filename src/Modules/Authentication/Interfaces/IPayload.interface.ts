@@ -1,7 +1,9 @@
-import { Roles } from "../../../Utilities/Template/types";
+import { Roles } from '@app/Utilities/Template/types';
 
-export interface IPaylaod  {
-    email: string;
-    id: string;
-    role: Roles;
+export interface IAuthPayload {
+  email: string;
+
+  role: Roles;
+
+  id: string;
 }

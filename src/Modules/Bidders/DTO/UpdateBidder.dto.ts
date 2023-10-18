@@ -4,13 +4,13 @@ export class updateBidderDTO {
 
     @IsOptional()
     @IsNumberString()
-    phoneNumber?: string;
+    phoneNumber?: string = "923182834216";
 
     @IsOptional()
     @IsString()
-    contact?: string;
+    contact?: string = "923182834216";
 
     @IsOptional()
     @IsString()
-    bidderName?: string;
+    bidderName?: string = "LCI Estimation and Constructions";
 }
