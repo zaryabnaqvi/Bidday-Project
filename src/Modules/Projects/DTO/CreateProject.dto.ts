@@ -95,6 +95,7 @@ export class CreateProjectDTO {
   @IsString()
   ContractAward: string;
 
+  ProjectDescription: string;
 
   @IsOptional()
   Schedule: {
