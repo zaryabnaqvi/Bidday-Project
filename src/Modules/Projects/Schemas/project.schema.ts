@@ -7,7 +7,7 @@ import { Users } from '../../../Modules/User/Schema/user.schema';
 
 @Schema({timestamps:true})
 export class Project {
-  @Prop({ required: true })
+  @Prop({ required: true ,unique:true})
   LCINumber: string;
 
   @Prop({ required: true })

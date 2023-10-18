@@ -9,13 +9,13 @@ export interface ICreateProject {
     County: string;
     Market: string;
     BuildingType: string;
-    ProjectCode?: string;
-    Owner?: string;
-    Estimator?: string;
-    TypeOfBid?: string;
-    BidDate?: string;
-    BidTime?: string;
-    SiteSize?: string;
+    ProjectCode: string;
+    Owner: string;
+    Estimator: string;
+    TypeOfBid: string;
+    BidDate: string;
+    BidTime: string;
+    SiteSize: string;
     ProjectSize: {
       TotalArea: string;
       BuildingFootprint: string;
@@ -36,7 +36,7 @@ export interface ICreateProject {
     };
     BidAmount?: string;
     ContractAward?: string;
-    Schedule ?: {
+    Schedule : {
         startDate: Date;
         completionDate: Date;
         durationDays: Number;
