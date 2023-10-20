@@ -27,7 +27,7 @@ export class AuthController {
     private authService: AuthService,
   ) {} 
 
-  //#region : Authentication
+//#region : AUTHENTICATION
 
   //Ready and Verified by Jawwad
   @Post('register')
@@ -44,6 +44,10 @@ export class AuthController {
     const result = await this.authService.userLogin(UserDTO);
     return result;
   }
+
+//#endregion
+
+//#region : RESET PASSWORD FLOW
 
   //Ready and Verified by Jawwad
   @Post('requestResetPassword')
@@ -68,9 +72,11 @@ export class AuthController {
     const result =  await this.authService.resetPass(reqBody);
     return result;
   }
-  //#endregion
 
-  //#region : Checking Guard
+//#endregion
+
+//#region : Checking Guard
+
   @Post('/hiddenmessage')
   @UseGuards(AuthGuard("jwt")) //I have to look at the auth guard and strategy again
   // @UseGuards(JwtAuthGuard)
@@ -79,6 +85,8 @@ export class AuthController {
     const result = "secrets" + JSON.stringify(req.user);
     return result;
   }
-  //#endregion
+
+//#endregion
+
 }
 

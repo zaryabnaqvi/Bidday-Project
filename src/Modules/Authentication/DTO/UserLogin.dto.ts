@@ -10,7 +10,7 @@ export class userLoginDTO {
     @IsNotEmpty()
     @IsString()
     @MinLength(6)
-    password: string = "bcit-076";
+    password: string = "123456";
 
     @IsNotEmpty()
     @IsEnum(Roles)
