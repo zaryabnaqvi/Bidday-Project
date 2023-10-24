@@ -1,4 +1,3 @@
-
 import { Injectable } from '@nestjs/common';
 import { HttpException, HttpStatus } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -9,7 +8,7 @@ import { payload } from '../DTO/payload.dto';
 import { resetPasswordDTO } from '../DTO/ResetPass.dto';
 import {generateOtpCode} from '../../../Utilities/OTP/otpGenerator'
 import { transporter } from '../../../Utilities/Email/sendEmail';
-import  moment from 'moment';
+import * as moment from 'moment';
 import { userLoginDTO } from '../DTO/UserLogin.dto';
 import { comparePassword } from '../../../Utilities/Hashing/bcrypt';
 import { verifyOtpDTO } from '../DTO/VerifyOtp.dto';
@@ -32,6 +31,8 @@ export class AuthService {
     @InjectModel(Users.name) private readonly userModel: Model<Users>,
     @InjectModel(Otp.name) private OtpModel: Model<Otp>,
   ) {}
+
+//#region : AUTHENTICATION
 
     async createUser(createUserDTO: createUserDTO){
         try{
@@ -89,46 +90,9 @@ export class AuthService {
         }
     }
 
-    async validateUser(authDTO: userLoginDTO){
-        try{
-            const user = await this.userModel.findOne({email: authDTO.email })
-            if(!user){
-                throw new HttpException('User with this email not found', HttpStatus.NOT_FOUND);
-            }
-            const isCorrectPass = comparePassword(authDTO.password,user.password);
-            if(!isCorrectPass){
-                throw new HttpException('Invalid Password',HttpStatus.NOT_ACCEPTABLE);
-            }
-            return user;
-        }catch (error) {
-            throw new HttpException(
-                error.message,
-                error.status || HttpStatus.BAD_REQUEST,
-            );
-        }
-    }
+//#endregion
 
-    async generateToken(IAuthPaylaod: IAuthPayload){
-        try{
-            const token = this.jwtService.sign({email: IAuthPaylaod.email})
-            return token;
-        }catch (error) {
-            throw new HttpException(
-                error.message,
-                error.status || HttpStatus.BAD_REQUEST,
-            );
-        }
-    }
-
-    // sanitizeUser(user: User) { 
-    // const sanitized = user.toObject();
-    // delete sanitized['password'];
-    // return sanitized;
-    // }
-  
-  // async signPayload(email: payload ) {
-  //   return sign(email ,  "process.env.SECRET_KEY" , { expiresIn: '7d' });
-  // }
+//#region : RESET PASSWORD FLOW
 
     async requestResetPassword(resetPasswordDTO:resetPasswordDTO){
         try{
@@ -248,20 +212,41 @@ export class AuthService {
     }
     }
 
-    async validate(payload : payload){
-        try{
-            const user = await this.userModel.findOne({email:payload.email})
+//#endregion
 
-            if(!user){
+//#region : VALIDATION CONSTRAINTS
+
+    async validateUser(authDTO: userLoginDTO) {
+        try {
+            const user = await this.userModel.findOne({ email: authDTO.email })
+            if (!user) {
                 throw new HttpException('User with this email not found', HttpStatus.NOT_FOUND);
             }
-
+            const isCorrectPass = comparePassword(authDTO.password, user.password);
+            if (!isCorrectPass) {
+                throw new HttpException('Invalid Password', HttpStatus.NOT_ACCEPTABLE);
+            }
             return user;
-        } catch(error){
+        } catch (error) {
             throw new HttpException(
                 error.message,
                 error.status || HttpStatus.BAD_REQUEST,
             );
         }
     }
+
+    async generateToken(IAuthPaylaod: IAuthPayload) {
+        try {
+            const token = this.jwtService.sign({ email: IAuthPaylaod.email })
+            return token;
+        } catch (error) {
+            throw new HttpException(
+                error.message,
+                error.status || HttpStatus.BAD_REQUEST,
+            );
+        }
+    }
+
+//#endregion
+
 }
