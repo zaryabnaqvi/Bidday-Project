@@ -8,6 +8,7 @@ import { Project, ProjectSchema } from '../Projects/Schemas/project.schema';
 import { Divisions, DivisionsSchema } from '../Divisions/Schema/division.schema';
 import { InitialBid, InitialBidSchema } from '../InitialBid/Schema/InitialBid.schema';
 import { IndividualBid, IndividualBidSchema } from '../IndividualBid/Schema/IndividualBid.schema';
+import { Bidders, BiddersSchema } from '../Bidders/Schema/bidder.schema';
 
 @Module({
   imports:[MongooseModule.forFeature([
@@ -17,6 +18,7 @@ import { IndividualBid, IndividualBidSchema } from '../IndividualBid/Schema/Indi
     {name:Divisions.name,schema:DivisionsSchema},
     {name:InitialBid.name,schema:InitialBidSchema},
     {name:IndividualBid.name,schema:IndividualBidSchema},
+    {name:Bidders.name,schema:BiddersSchema}
 
 
 

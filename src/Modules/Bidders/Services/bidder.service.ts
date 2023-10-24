@@ -54,7 +54,7 @@ export class BidderService {
         }
     }
 
-    async createBidder(createBidderBody: createBidderDTO) {
+    async createBidder(divisionCategoryId:string,projectId:string,createBidderBody: createBidderDTO) {
         try {
             const { companyName, phoneNumber, contact } = createBidderBody;
             const isBidderExist = await this.bidderModel.findOne({
@@ -65,7 +65,8 @@ export class BidderService {
             if (isBidderExist) {
                 throw new HttpException('Bidder is already exist', HttpStatus.BAD_REQUEST)
             }
-            const toCreateBidder: ICreateBidder = createBidderBody;
+          
+            const toCreateBidder: ICreateBidder = {projectId,contact:createBidderBody.contact,phoneNumber:createBidderBody.phoneNumber,companyName:createBidderBody.companyName,divisionCategoryId};
             const newBidder = new this.bidderModel(toCreateBidder);
             const createdBidder = await newBidder.save();
             return {

@@ -1,3 +1,5 @@
+import { DivisionCategory } from '@app/Modules/DivisionCategory/Schemas/divisionCategory.schema';
+import { Project } from '@app/Modules/Projects/Schemas/project.schema';
 import { 
     Prop, 
     Schema, 
@@ -26,6 +28,11 @@ import {
       required: true, 
     })
     contact: string;
+
+    @Prop({required:true,ref:DivisionCategory.name,type:Types.ObjectId})
+    divisionCategoryId:DivisionCategory
+    @Prop({required:true,ref:Project.name,type:Types.ObjectId})
+    projectId:Project
   }
   
   export const BiddersSchema = SchemaFactory.createForClass(Bidders);
