@@ -12,6 +12,7 @@ import { IUpdateBreakDownItem } from '../Interfaces/IUpdateBreakDownItem.interfa
 import { Divisions } from '../../../Modules/Divisions/Schema/division.schema';
 import { InitialBid } from '../../../Modules/initialBid/Schema/InitialBid.schema';
 import { IndividualBid } from '@app/Modules/IndividualBid/Schema/IndividualBid.schema';
+import { Bidders } from '@app/Modules/Bidders/Schema/bidder.schema';
 
 @Injectable()
 
@@ -24,9 +25,7 @@ export class BreakDownItemService {
     @InjectModel(Divisions.name) private readonly divisionModel: Model<Divisions>,
     @InjectModel(InitialBid.name) private readonly initialBidModel: Model<InitialBid>,
     @InjectModel(IndividualBid.name) private readonly individualBidModel: Model<IndividualBid>,
-
-
-
+    @InjectModel(Bidders.name) private readonly bidderModel : Model<Bidders>
 
   ) { }
 
@@ -125,11 +124,14 @@ export class BreakDownItemService {
       for(let i =0; i<DivisionCategorys.length;i++){
         const BreakDownItems = await this.findBreakDowmItemByProjectForDivision(projectId,DivisionCategorys[i].id)
         const initialBid = await this.initialBidModel.find({divisionCategoryId:DivisionCategorys[i].id,projectId:projectId})
+        const Bidders = await this.bidderModel.find({divisionCategoryId:DivisionCategorys[i].id,projectId:projectId})
+
         let outputModel = {
             initialBid:initialBid,
             DivisionCategoryId:DivisionCategorys[i].id,
             DivisionCategoryName:DivisionCategorys[i].divisionCategoryName,
-            BreakDownItems:BreakDownItems.data
+            BreakDownItems:BreakDownItems.data,
+            Bidders:Bidders
         }
         output.push(outputModel)
       }

@@ -44,10 +44,10 @@ export class BidderController {
     }
 
     //Ready and Verified by Jawwad
-    @Post('create')
+    @Post('create/:divisionCategoryId')
     @UsePipes(ValidationPipe)
-    async createBidder(@Body() CreateBidderDto: createBidderDTO) {
-        const result = await this.bidderService.createBidder(CreateBidderDto);
+    async createBidder(@Body() CreateBidderDto: createBidderDTO,@Param("divisionCategoryId") divisionCategoryId,@Param("projectId") projectId) {
+        const result = await this.bidderService.createBidder(divisionCategoryId,projectId,CreateBidderDto);
         return result;
     }
 
